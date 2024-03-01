@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query</title>
+</head>
+<body>
+    <script>
+        // consult in debug mode to see the changes
+// https://cdpn.io/pen/debug/BabMxqo
+
+const emojis = ['🔵', '🔴', '🟠'] 
+
+// solution URLSEARCHPARAMS
+const queryParams = new URLSearchParams(document.location.search);
+var tabTitle = ''
+    if(queryParams.get("page")) {
+        //alert('ok')
+        tabTitle = queryParams.get("page") + emojis[Math.floor(Math.random() * emojis.length)]
+    } else {
+        tabTitle = "home" + emojis[Math.floor(Math.random() * emojis.length)]
+    }
+    
+
+console.log(tabTitle)
+document.title = tabTitle
+/*
+// solution "array"
+const queryParams2 = document.location.search;
+// remove '?'
+queryParams2.replace('?', '')
+const queryParamsArray = queryParams2.split('&')
+const pageQuery = queryParamsArray.filter(query => query.includes('page'))
+
+document.title = pageQuery[0].split('=')[1] + " " + emojis[Math.floor(Math.random() * emojis.length)]
+*/
+    </script>
+</body>
+</html>
